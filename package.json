@@ -44,8 +44,8 @@
   "volta": {
     "node": "20.17.0"
   },
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "build/src/index.js",
+  "types": "builk/src/index.d.ts",
   "files": [
     "build",
     "LICENSE",
@@ -53,7 +53,9 @@
   ],
   "exports": {
     ".": {
-      "import": "./build/src/index.js"
+      "require": "./build/src/index.js",
+      "import": "./build/src/index.js",
+      "types": "./build/src/index.d.ts"
     }
   },
   "keywords": [
