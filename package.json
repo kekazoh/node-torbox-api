@@ -45,9 +45,9 @@
     "node": "20.17.0"
   },
   "main": "build/src/index.js",
-  "types": "builk/src/index.d.ts",
+  "types": "build/src/index.d.ts",
   "files": [
-    "build",
+    "build/",
     "LICENSE",
     "README.md"
   ],
@@ -66,10 +66,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/node-torbox-api.git"
+    "url": "git+https://github.com/kekazoh/node-torbox-api.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/node-torbox-api/issues"
+    "url": "https://github.com/kekazoh/node-torbox-api/issues"
   },
-  "homepage": "https://github.com/yourusername/node-torbox-api#readme"
+  "homepage": "https://github.com/kekazoh/node-torbox-api#readme"
 }
