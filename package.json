@@ -53,8 +53,7 @@
   ],
   "exports": {
     ".": {
-      "import": "./build/index.js",
-      "types": "./build/index.d.ts"
+      "import": "./build/src/index.js"
     }
   },
   "keywords": [
