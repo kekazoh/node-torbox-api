@@ -1,4 +1,4 @@
-import { BaseClient } from './BaseClient.js';
+import { BaseClient } from './base.js';
 import { StandardResponse } from '../interfaces.js';
 import { Notification } from './interfaces.js';
 

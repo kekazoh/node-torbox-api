@@ -1,4 +1,4 @@
-import { BaseClient } from './BaseClient.js';
+import { BaseClient } from './base.js';
 import { StandardResponse } from '../interfaces.js';
 
 export class UserAPI extends BaseClient {

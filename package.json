@@ -24,7 +24,6 @@
     "vitest": "~2.1"
   },
   "scripts": {
-    "start": "node build/src/main.js",
     "clean": "rimraf coverage build tmp",
     "prebuild": "npm run lint",
     "build": "tsc -p tsconfig.json",
@@ -44,5 +43,32 @@
   },
   "volta": {
     "node": "20.17.0"
-  }
+  },
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build",
+    "LICENSE",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "import": "./build/index.js",
+      "types": "./build/index.d.ts"
+    }
+  },
+  "keywords": [
+    "torbox",
+    "api",
+    "client",
+    "torrent"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/node-torbox-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/node-torbox-api/issues"
+  },
+  "homepage": "https://github.com/yourusername/node-torbox-api#readme"
 }

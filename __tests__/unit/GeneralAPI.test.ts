@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { GeneralAPI } from '../../src/api/GeneralAPI.js';
+import { GeneralAPI } from '../../src/api/generalApi.js';
 import { mockConfig } from '../mocks/config.js';
 import { vi } from 'vitest';
 
