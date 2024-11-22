@@ -1,42 +1,6 @@
 import { BaseClient } from './BaseClient.js';
 import { StandardResponse } from '../interfaces.js';
-
-interface UsenetDownloadInfo {
-  id: number;
-  created_at: string;
-  updated_at: string;
-  nzb_data: string;
-  size: number;
-  active: boolean;
-  auth_id: string;
-  download_state: string;
-  progress: number;
-  download_speed: number;
-  name: string;
-  eta: number;
-  server: number;
-  expires_at: string;
-  download_present: boolean;
-  download_finished: boolean;
-  files: UsenetFile[];
-}
-
-interface UsenetFile {
-  id: number;
-  md5: string;
-  s3_path: string;
-  name: string;
-  size: number;
-  mimetype: string;
-  short_name: string;
-}
-
-interface CreateUsenetDownloadOptions {
-  file?: Blob; // NZB file
-  url?: string; // NZB URL
-  name?: string;
-  as_queued?: boolean;
-}
+import { CreateUsenetDownloadOptions, UsenetDownloadInfo } from './interfaces.js';
 
 export class UsenetAPI extends BaseClient {
   async createUsenetDownload(options: CreateUsenetDownloadOptions): Promise<StandardResponse> {

@@ -1,13 +1,6 @@
 import { BaseClient } from './BaseClient.js';
 import { StandardResponse } from '../interfaces.js';
-
-interface Notification {
-  id: number;
-  created_at: string;
-  title: string;
-  message: string;
-  auth_id: string;
-}
+import { Notification } from './interfaces.js';
 
 export class NotificationsAPI extends BaseClient {
   async getNotifications(): Promise<StandardResponse<Notification[]>> {

@@ -1,41 +1,6 @@
 import { BaseClient } from './BaseClient.js';
 import { StandardResponse } from '../interfaces.js';
-
-interface WebDownloadInfo {
-  id: number;
-  created_at: string;
-  updated_at: string;
-  url: string;
-  size: number;
-  active: boolean;
-  auth_id: string;
-  download_state: string;
-  progress: number;
-  download_speed: number;
-  name: string;
-  eta: number;
-  server: number;
-  expires_at: string;
-  download_present: boolean;
-  download_finished: boolean;
-  files: WebFile[];
-}
-
-interface WebFile {
-  id: number;
-  md5: string;
-  s3_path: string;
-  name: string;
-  size: number;
-  mimetype: string;
-  short_name: string;
-}
-
-interface CreateWebDownloadOptions {
-  url: string;
-  name?: string;
-  as_queued?: boolean;
-}
+import { CreateWebDownloadOptions, WebDownloadInfo } from './interfaces.js';
 
 export class WebAPI extends BaseClient {
   async createWebDownload(options: CreateWebDownloadOptions): Promise<StandardResponse> {

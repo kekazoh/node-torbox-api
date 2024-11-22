@@ -1,6 +1,6 @@
 import { BaseClient } from './BaseClient.js';
-import { CreateTorrentOptions, StandardResponse, TorrentInfo } from '../interfaces.js';
-
+import { StandardResponse } from '../interfaces.js';
+import { CreateTorrentOptions, TorrentInfo } from './interfaces.js';
 export class TorrentsAPI extends BaseClient {
       // Torrents API
   async createTorrent(options: CreateTorrentOptions): Promise<StandardResponse> {

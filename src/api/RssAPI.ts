@@ -1,12 +1,6 @@
 import { BaseClient } from './BaseClient.js';
 import { StandardResponse } from '../interfaces.js';
-
-interface RssFeedOptions {
-  url: string;
-  name?: string;
-  regex?: string;
-  as_queued?: boolean;
-}
+import { RssFeedOptions } from './interfaces.js';
 
 export class RssAPI extends BaseClient {
 
