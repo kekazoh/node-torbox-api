@@ -14,16 +14,16 @@ export class BaseClient {
     }
     this.baseURL = config.baseURL || 'https://api.torbox.app';
     this.headers = {
-      'Authorization': `Bearer ${config.apiKey}`,
+      Authorization: `Bearer ${config.apiKey}`,
       'Content-Type': 'application/json',
     };
   }
 
   protected async request<T>(
     endpoint: string,
-    options: RequestOptions = {}
+    options: RequestOptions = {},
   ): Promise<StandardResponse<T>> {
-    const { params, ...fetchOptions } = options;
+    const { params = {}, ...fetchOptions } = options;
     const queryString = this.buildQueryString(params);
     const url = `${this.baseURL}/v1/api${endpoint}${queryString}`;
 
@@ -43,7 +43,9 @@ export class BaseClient {
     return response.json();
   }
 
-  protected buildQueryString(params: Record<string, string | number | boolean | undefined>): string {
+  protected buildQueryString(
+    params: Record<string, string | number | boolean | undefined>,
+  ): string {
     const query = Object.entries(params)
       .filter(([, value]) => value !== undefined)
       .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)

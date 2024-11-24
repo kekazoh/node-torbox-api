@@ -2,8 +2,10 @@ import { BaseClient } from './base.js';
 import { StandardResponse } from '../interfaces.js';
 import { CreateTorrentOptions, TorrentInfo } from './interfaces.js';
 export class TorrentsAPI extends BaseClient {
-      // Torrents API
-  async createTorrent(options: CreateTorrentOptions): Promise<StandardResponse> {
+  // Torrents API
+  async createTorrent(
+    options: CreateTorrentOptions,
+  ): Promise<StandardResponse> {
     const formData = new FormData();
 
     if (options.file) {
@@ -36,8 +38,8 @@ export class TorrentsAPI extends BaseClient {
   }
 
   async controlTorrent(
-    torrentId: number, 
-    operation: 'reannounce' | 'delete' | 'resume' | 'pause'
+    torrentId: number,
+    operation: 'reannounce' | 'delete' | 'resume' | 'pause',
   ): Promise<StandardResponse> {
     return this.request('/torrents/controltorrent', {
       method: 'POST',
@@ -49,8 +51,8 @@ export class TorrentsAPI extends BaseClient {
   }
 
   async controlQueuedTorrent(
-    queuedId: number, 
-    operation: 'delete'
+    queuedId: number,
+    operation: 'delete',
   ): Promise<StandardResponse> {
     return this.request('/torrents/controlqueued', {
       method: 'POST',
@@ -96,14 +98,14 @@ export class TorrentsAPI extends BaseClient {
 
   async exportTorrentData(
     torrentId: number,
-    type: 'magnet' | 'file'
+    type: 'magnet' | 'file',
   ): Promise<StandardResponse | Blob> {
     const queryString = this.buildQueryString({ torrent_id: torrentId, type });
     const response = await fetch(
       `${this.baseURL}/v1/api/torrents/exportdata${queryString}`,
       {
         headers: this.headers,
-      }
+      },
     );
 
     if (!response.ok) {
@@ -121,4 +123,4 @@ export class TorrentsAPI extends BaseClient {
     const queryString = this.buildQueryString(params);
     return this.request(`/torrents/torrentinfo${queryString}`);
   }
-} 
+}

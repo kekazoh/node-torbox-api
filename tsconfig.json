@@ -18,9 +18,12 @@
     "noImplicitAny": false,
     "noImplicitThis": false,
     "strictNullChecks": false,
+    "esModuleInterop": true
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*.js",
+    "src/**/*.d.ts",
     "__tests__",
     "vitest.config.ts"
   ]

@@ -3,7 +3,9 @@ import { StandardResponse } from '../interfaces.js';
 import { CreateWebDownloadOptions, WebDownloadInfo } from './interfaces.js';
 
 export class WebAPI extends BaseClient {
-  async createWebDownload(options: CreateWebDownloadOptions): Promise<StandardResponse> {
+  async createWebDownload(
+    options: CreateWebDownloadOptions,
+  ): Promise<StandardResponse> {
     const formData = new FormData();
     formData.append('url', options.url);
 
@@ -22,7 +24,7 @@ export class WebAPI extends BaseClient {
 
   async controlWebDownload(
     downloadId: number,
-    operation: 'delete' | 'resume' | 'pause'
+    operation: 'delete' | 'resume' | 'pause',
   ): Promise<StandardResponse> {
     return this.request('/webdl/controlwebdownload', {
       method: 'POST',
@@ -35,7 +37,7 @@ export class WebAPI extends BaseClient {
 
   async controlQueuedDownload(
     queuedId: number,
-    operation: 'delete'
+    operation: 'delete',
   ): Promise<StandardResponse> {
     return this.request('/webdl/controlqueued', {
       method: 'POST',
@@ -75,4 +77,4 @@ export class WebAPI extends BaseClient {
       params: { url },
     });
   }
-} 
+}

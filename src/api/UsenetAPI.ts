@@ -1,9 +1,14 @@
 import { BaseClient } from './base.js';
 import { StandardResponse } from '../interfaces.js';
-import { CreateUsenetDownloadOptions, UsenetDownloadInfo } from './interfaces.js';
+import {
+  CreateUsenetDownloadOptions,
+  UsenetDownloadInfo,
+} from './interfaces.js';
 
 export class UsenetAPI extends BaseClient {
-  async createUsenetDownload(options: CreateUsenetDownloadOptions): Promise<StandardResponse> {
+  async createUsenetDownload(
+    options: CreateUsenetDownloadOptions,
+  ): Promise<StandardResponse> {
     const formData = new FormData();
 
     if (options.file) {
@@ -27,7 +32,7 @@ export class UsenetAPI extends BaseClient {
 
   async controlUsenetDownload(
     downloadId: number,
-    operation: 'delete' | 'resume' | 'pause'
+    operation: 'delete' | 'resume' | 'pause',
   ): Promise<StandardResponse> {
     return this.request('/usenet/controlusenetdownload', {
       method: 'POST',
@@ -60,4 +65,4 @@ export class UsenetAPI extends BaseClient {
       params,
     });
   }
-} 
+}
