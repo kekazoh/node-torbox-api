@@ -1,9 +1,9 @@
 import { TorboxClient } from '../../src/client.js';
-import { TorrentsAPI } from '../../src/api/torrentsApi.js';
-import { UserAPI } from '../../src/api/userApi.js';
-import { WebAPI } from '../../src/api/webApi.js';
-import { UsenetAPI } from '../../src/api/usenetApi.js';
-import { RssAPI } from '../../src/api/rssApi.js';
+import { TorrentsAPI } from '../../src/api/TorrentsApi.js';
+import { UserAPI } from '../../src/api/UserApi.js';
+import { WebAPI } from '../../src/api/WebApi.js';
+import { UsenetAPI } from '../../src/api/UsenetApi.js';
+import { RssAPI } from '../../src/api/RssApi.js';
 import { TorboxConfig } from '../../src/interfaces.js';
 import { describe, it, expect, beforeEach } from 'vitest';
 

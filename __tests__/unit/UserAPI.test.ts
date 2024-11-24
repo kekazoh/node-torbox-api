@@ -1,4 +1,4 @@
-import { UserAPI } from '../../src/api/userApi.js';
+import { UserAPI } from '../../src/api/UserApi.js';
 import { StandardResponse } from '../../src/interfaces.js';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { mockConfig } from '../mocks/config.js';

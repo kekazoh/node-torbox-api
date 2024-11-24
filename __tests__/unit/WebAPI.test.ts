@@ -1,4 +1,4 @@
-import { WebAPI } from '../../src/api/webApi.js';
+import { WebAPI } from '../../src/api/WebApi.js';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { mockConfig } from '../mocks/config.js';
 

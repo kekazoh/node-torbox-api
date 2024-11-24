@@ -1,5 +1,5 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
-import { TorrentsAPI } from '../../src/api/torrentsApi.js';
+import { TorrentsAPI } from '../../src/api/TorrentsApi.js';
 import { mockConfig } from '../mocks/config.js';
 
 describe('TorrentsAPI', () => {
