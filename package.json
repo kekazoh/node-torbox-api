@@ -1,6 +1,6 @@
 {
   "name": "node-torbox-api",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Node.js client for Torbox API",
   "type": "module",
   "engines": {
@@ -47,7 +47,8 @@
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",
   "files": [
-    "src/",
+    "src",
+    "build",
     "LICENSE",
     "README.md"
   ],
