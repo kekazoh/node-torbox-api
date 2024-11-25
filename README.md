@@ -2,6 +2,9 @@
 
 Unofficial Node.js client for the Torbox API. Provides a fully typed interface for interacting with Torbox's torrent, usenet, web download, and RSS services.
 
+## [WIP]
+**IMPORTANT** This is a work in progress. It might be incomplete and some things haven't been tested yet, so it might be buggy. 
+
 ## Features
 
 - 🔒 Fully typed TypeScript API client
