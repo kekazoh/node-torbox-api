@@ -4,6 +4,17 @@ interface RequestOptions extends RequestInit {
   params?: Record<string, string | number | boolean | undefined>;
 }
 
+export class TorboxError extends Error {
+  status: number;
+  
+  constructor(message: string, status: number, public response: StandardResponse<unknown>) {
+    super(message);
+    this.name = 'TorboxError';
+    this.response = response;
+    this.status = status;
+  }
+}
+
 export class BaseClient {
   protected baseURL: string;
   protected headers: HeadersInit;
@@ -15,7 +26,6 @@ export class BaseClient {
     this.baseURL = config.baseURL || 'https://api.torbox.app';
     this.headers = {
       Authorization: `Bearer ${config.apiKey}`,
-      'Content-Type': 'application/json',
     };
   }
 
@@ -37,9 +47,9 @@ export class BaseClient {
 
     if (!response.ok) {
       const error = await response.json();
-      throw error;
+      const errorDetail = error.detail || 'Unknown error';
+      throw new TorboxError(`[HTTP ${response.status}]: ${errorDetail}`, response.status, error);
     }
-
     return response.json();
   }
 

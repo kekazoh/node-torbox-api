@@ -1,38 +1,36 @@
-import { BaseClient } from './base.js';
+import { BaseClient, TorboxError } from './base.js';
 import { StandardResponse } from '../interfaces.js';
 import { CreateTorrentOptions, TorrentInfo } from './interfaces.js';
+import assert from 'assert';
 export class TorrentsAPI extends BaseClient {
   // Torrents API
   async createTorrent(
     options: CreateTorrentOptions,
   ): Promise<StandardResponse> {
     const formData = new FormData();
-
+    assert(options.file || options.magnet, '`file` or `magnet` option must be set');
     if (options.file) {
       formData.append('file', new Blob([options.file]));
     }
     if (options.magnet) {
       formData.append('magnet', options.magnet);
     }
-    if (options.seed) {
+    // Fix: Check for undefined instead of truthy values for boolean options
+    if (options.seed !== undefined) {
       formData.append('seed', options.seed.toString());
     }
-    if (typeof options.allow_zip === 'boolean') {
+    if (options.allow_zip !== undefined) {
       formData.append('allow_zip', options.allow_zip.toString());
     }
     if (options.name) {
       formData.append('name', options.name);
     }
-    if (typeof options.as_queued === 'boolean') {
+    if (options.as_queued !== undefined) {
       formData.append('as_queued', options.as_queued.toString());
     }
 
     return this.request('/torrents/createtorrent', {
       method: 'POST',
-      headers: {
-        // Remove default Content-Type as FormData sets its own
-        'Content-Type': undefined,
-      },
       body: formData,
     });
   }
@@ -69,8 +67,7 @@ export class TorrentsAPI extends BaseClient {
     zip_link?: boolean;
     torrent_file?: boolean;
   }): Promise<StandardResponse<string>> {
-    const queryString = this.buildQueryString(params);
-    return this.request(`/torrents/requestdl${queryString}`);
+    return this.request('/torrents/requestdl', { params });
   }
 
   async getTorrentList(params?: {
@@ -79,8 +76,17 @@ export class TorrentsAPI extends BaseClient {
     offset?: number;
     limit?: number;
   }): Promise<StandardResponse<TorrentInfo[]>> {
-    const queryString = params ? this.buildQueryString(params) : '';
-    return this.request(`/torrents/mylist${queryString}`);
+    try {
+      return this.request('/torrents/mylist', { params });
+    } catch (error) {
+      if (error instanceof TorboxError && error.status === 404) {
+        return {
+          ...error.response,
+          data: [],
+        };
+      } else throw error;
+    }
+    
   }
 
   async checkCached(params: {
@@ -88,12 +94,11 @@ export class TorrentsAPI extends BaseClient {
     format?: 'object' | 'list';
     list_files?: boolean;
   }): Promise<StandardResponse> {
-    const queryString = this.buildQueryString(params);
-    return this.request(`/torrents/checkcached${queryString}`);
+    return this.request('/torrents/checkcached', { params });
   }
 
   async searchTorrents(query: string): Promise<StandardResponse> {
-    return this.request(`/torrents/search?query=${encodeURIComponent(query)}`);
+    return this.request('/torrents/search', { params: {query} });
   }
 
   async exportTorrentData(
@@ -120,7 +125,6 @@ export class TorrentsAPI extends BaseClient {
     hash: string;
     timeout?: number;
   }): Promise<StandardResponse> {
-    const queryString = this.buildQueryString(params);
-    return this.request(`/torrents/torrentinfo${queryString}`);
+    return this.request(`/torrents/torrentinfo`, { params });
   }
 }
