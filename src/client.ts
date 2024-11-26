@@ -9,7 +9,7 @@ import { NotificationsAPI } from './api/notifications-api.js';
 
 export class TorboxClient {
   public torrents: TorrentsAPI;
-  public users: UserAPI;
+  public user: UserAPI;
   public web: WebAPI;
   public usenet: UsenetAPI;
   public rss: RssAPI;
@@ -18,7 +18,7 @@ export class TorboxClient {
 
   constructor(config: TorboxConfig) {
     this.torrents = new TorrentsAPI(config);
-    this.users = new UserAPI(config);
+    this.user = new UserAPI(config);
     this.web = new WebAPI(config);
     this.usenet = new UsenetAPI(config);
     this.rss = new RssAPI(config);

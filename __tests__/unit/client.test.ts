@@ -34,9 +34,9 @@ describe('TorboxClient', () => {
     });
 
     it('should properly initialize UserAPI', () => {
-      expect(client.users).toBeInstanceOf(UserAPI);
-      expect(client.users['baseURL']).toBe(mockConfig.baseURL);
-      expect(client.users['headers']).toEqual({
+      expect(client.user).toBeInstanceOf(UserAPI);
+      expect(client.user['baseURL']).toBe(mockConfig.baseURL);
+      expect(client.user['headers']).toEqual({
         'Authorization': `Bearer ${mockConfig.apiKey}`,
       });
     });
@@ -75,7 +75,7 @@ describe('TorboxClient', () => {
       
       const apis = [
         newClient.torrents,
-        newClient.users,
+        newClient.user,
         newClient.web,
         newClient.usenet,
         newClient.rss,
