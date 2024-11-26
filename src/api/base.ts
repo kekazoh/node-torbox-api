@@ -22,6 +22,7 @@ export class TorboxError extends Error {
 export class BaseClient {
   protected baseURL: string;
   protected headers: HeadersInit;
+  protected apiKey: string;
 
   constructor(config: TorboxConfig) {
     if (!config.apiKey) {
@@ -31,6 +32,7 @@ export class BaseClient {
     this.headers = {
       Authorization: `Bearer ${config.apiKey}`,
     };
+    this.apiKey = config.apiKey;
   }
 
   protected async request<T>(
