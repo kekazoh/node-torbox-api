@@ -25,7 +25,7 @@
     "src/**/*.d.ts",
     "__tests__",
     "vitest.config.ts"
-  ],
+, "src/api/notificationsApi.ts", "src/api/rssApi.ts", "src/api/torrentsApi.ts", "src/api/usenetApi.ts", "src/api/userApi.ts", "src/api/webApi.ts"  ],
   "exclude": [
     "node_modules",
     "build"
