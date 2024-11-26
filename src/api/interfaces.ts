@@ -189,7 +189,8 @@ export interface SearchTorrentResult {
 }
 
 export interface CreateTorrentResult {
-  torrent_id: number;
+  torrent_id?: number;
+  queued_id?: number;
   name: string;
   hash: string;
 }

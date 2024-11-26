@@ -76,6 +76,7 @@ export class TorrentsAPI extends BaseClient {
     file_id?: number;
     zip_link?: boolean;
     torrent_file?: boolean;
+    user_ip?: string;
   }): Promise<StandardResponse<string>> {
     return this.request('/torrents/requestdl', {
       params: { ...params, token: this.apiKey },
