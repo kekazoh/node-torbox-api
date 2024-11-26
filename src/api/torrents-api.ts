@@ -1,12 +1,12 @@
 import { BaseClient, TorboxError } from './base.js';
 import { StandardResponse } from '../interfaces.js';
-import { CreateTorrentOptions, TorrentInfo } from './interfaces.js';
+import { CacheResult, CreateTorrentOptions, CreateTorrentResult, SearchTorrentResult, TorrentInfo } from './interfaces.js';
 import assert from 'assert';
 export class TorrentsAPI extends BaseClient {
   // Torrents API
   async createTorrent(
     options: CreateTorrentOptions,
-  ): Promise<StandardResponse> {
+  ): Promise<StandardResponse<CreateTorrentResult>> {
     const formData = new FormData();
     assert(
       options.file || options.magnet,
@@ -95,11 +95,11 @@ export class TorrentsAPI extends BaseClient {
     hash: string;
     format?: 'object' | 'list';
     list_files?: boolean;
-  }): Promise<StandardResponse> {
+  }): Promise<StandardResponse<CacheResult[] | Record<string, CacheResult>>> {
     return this.request('/torrents/checkcached', { params });
   }
 
-  async searchTorrents(query: string): Promise<StandardResponse> {
+  async searchTorrents(query: string): Promise<StandardResponse<SearchTorrentResult[]>> {
     return this.request('/torrents/search', { params: { query } });
   }
 
