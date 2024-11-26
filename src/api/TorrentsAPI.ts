@@ -8,7 +8,10 @@ export class TorrentsAPI extends BaseClient {
     options: CreateTorrentOptions,
   ): Promise<StandardResponse> {
     const formData = new FormData();
-    assert(options.file || options.magnet, '`file` or `magnet` option must be set');
+    assert(
+      options.file || options.magnet,
+      '`file` or `magnet` option must be set',
+    );
     if (options.file) {
       formData.append('file', new Blob([options.file]));
     }
@@ -86,7 +89,6 @@ export class TorrentsAPI extends BaseClient {
         };
       } else throw error;
     }
-    
   }
 
   async checkCached(params: {
@@ -98,7 +100,7 @@ export class TorrentsAPI extends BaseClient {
   }
 
   async searchTorrents(query: string): Promise<StandardResponse> {
-    return this.request('/torrents/search', { params: {query} });
+    return this.request('/torrents/search', { params: { query } });
   }
 
   async exportTorrentData(

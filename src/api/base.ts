@@ -6,8 +6,12 @@ interface RequestOptions extends RequestInit {
 
 export class TorboxError extends Error {
   status: number;
-  
-  constructor(message: string, status: number, public response: StandardResponse<unknown>) {
+
+  constructor(
+    message: string,
+    status: number,
+    public response: StandardResponse<unknown>,
+  ) {
     super(message);
     this.name = 'TorboxError';
     this.response = response;
@@ -48,7 +52,11 @@ export class BaseClient {
     if (!response.ok) {
       const error = await response.json();
       const errorDetail = error.detail || 'Unknown error';
-      throw new TorboxError(`[HTTP ${response.status}]: ${errorDetail}`, response.status, error);
+      throw new TorboxError(
+        `[HTTP ${response.status}]: ${errorDetail}`,
+        response.status,
+        error,
+      );
     }
     return response.json();
   }
