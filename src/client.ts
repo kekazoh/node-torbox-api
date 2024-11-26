@@ -1,11 +1,11 @@
 import { TorboxConfig } from './interfaces.js';
-import { TorrentsAPI } from './api/TorrentsApi.js';
-import { UserAPI } from './api/UserApi.js';
-import { WebAPI } from './api/WebApi.js';
-import { UsenetAPI } from './api/UsenetApi.js';
-import { RssAPI } from './api/RssApi.js';
-import { GeneralAPI } from './api/GeneralApi.js';
-import { NotificationsAPI } from './api/NotificationsApi.js';
+import { TorrentsAPI } from './api/torrentsApi.js';
+import { UserAPI } from './api/userApi.js';
+import { WebAPI } from './api/webApi.js';
+import { UsenetAPI } from './api/usenetApi.js';
+import { RssAPI } from './api/rssApi.js';
+import { GeneralAPI } from './api/generalApi.js';
+import { NotificationsAPI } from './api/notificationsApi.js';
 
 export class TorboxClient {
   public torrents: TorrentsAPI;
