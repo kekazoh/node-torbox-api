@@ -159,3 +159,50 @@ export interface CreateWebDownloadOptions {
   name?: string;
   as_queued?: boolean;
 }
+
+export interface CacheFile {
+  name: string;
+  size: number;
+}
+
+export interface CacheResult {
+  hash: string;
+  name: string;
+  size: number;
+  files?: CacheFile[];
+}
+
+export interface SearchTorrentResult {
+  id: string;
+  name: string;
+  categories: string[];
+  hash: string;
+  size: number;
+  magnet: string;
+  torrent_file: string;
+  preferred_type: string;
+  website: string;
+  source: string;
+  peers: number;
+  seeders: number;
+  updated_at: string;
+}
+
+export interface CreateTorrentResult {
+  torrent_id?: number;
+  queued_id?: number;
+  name: string;
+  hash: string;
+}
+
+export interface BasicTorrentFile {
+  name: string;
+  size: number;
+}
+
+export interface BasicTorrentInfo {
+  name: string;
+  hash: string;
+  size: number;
+  files: BasicTorrentFile[];
+}

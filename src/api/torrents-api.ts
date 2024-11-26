@@ -1,12 +1,19 @@
 import { BaseClient, TorboxError } from './base.js';
 import { StandardResponse } from '../interfaces.js';
-import { CreateTorrentOptions, TorrentInfo } from './interfaces.js';
+import {
+  BasicTorrentInfo,
+  CacheResult,
+  CreateTorrentOptions,
+  CreateTorrentResult,
+  SearchTorrentResult,
+  TorrentInfo,
+} from './interfaces.js';
 import assert from 'assert';
 export class TorrentsAPI extends BaseClient {
   // Torrents API
   async createTorrent(
     options: CreateTorrentOptions,
-  ): Promise<StandardResponse> {
+  ): Promise<StandardResponse<CreateTorrentResult>> {
     const formData = new FormData();
     assert(
       options.file || options.magnet,
@@ -69,8 +76,11 @@ export class TorrentsAPI extends BaseClient {
     file_id?: number;
     zip_link?: boolean;
     torrent_file?: boolean;
+    user_ip?: string;
   }): Promise<StandardResponse<string>> {
-    return this.request('/torrents/requestdl', { params });
+    return this.request('/torrents/requestdl', {
+      params: { ...params, token: this.apiKey },
+    });
   }
 
   async getTorrentList(params?: {
@@ -78,7 +88,7 @@ export class TorrentsAPI extends BaseClient {
     id?: number;
     offset?: number;
     limit?: number;
-  }): Promise<StandardResponse<TorrentInfo[]>> {
+  }): Promise<StandardResponse<TorrentInfo | TorrentInfo[]>> {
     try {
       return this.request('/torrents/mylist', { params });
     } catch (error) {
@@ -95,11 +105,13 @@ export class TorrentsAPI extends BaseClient {
     hash: string;
     format?: 'object' | 'list';
     list_files?: boolean;
-  }): Promise<StandardResponse> {
+  }): Promise<StandardResponse<CacheResult[] | Record<string, CacheResult>>> {
     return this.request('/torrents/checkcached', { params });
   }
 
-  async searchTorrents(query: string): Promise<StandardResponse> {
+  async searchTorrents(
+    query: string,
+  ): Promise<StandardResponse<SearchTorrentResult[]>> {
     return this.request('/torrents/search', { params: { query } });
   }
 
@@ -126,7 +138,7 @@ export class TorrentsAPI extends BaseClient {
   async getTorrentInfo(params: {
     hash: string;
     timeout?: number;
-  }): Promise<StandardResponse> {
+  }): Promise<StandardResponse<BasicTorrentInfo>> {
     return this.request(`/torrents/torrentinfo`, { params });
   }
 }
