@@ -193,3 +193,15 @@ export interface CreateTorrentResult {
   name: string;
   hash: string;
 }
+
+export interface BasicTorrentFile {
+  name: string;
+  size: number;
+}
+
+export interface BasicTorrentInfo {
+  name: string;
+  hash: string;
+  size: number;
+  files: BasicTorrentFile[];
+}

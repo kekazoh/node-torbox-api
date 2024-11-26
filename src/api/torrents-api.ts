@@ -1,6 +1,6 @@
 import { BaseClient, TorboxError } from './base.js';
 import { StandardResponse } from '../interfaces.js';
-import { CacheResult, CreateTorrentOptions, CreateTorrentResult, SearchTorrentResult, TorrentInfo } from './interfaces.js';
+import { BasicTorrentInfo, CacheResult, CreateTorrentOptions, CreateTorrentResult, SearchTorrentResult, TorrentInfo } from './interfaces.js';
 import assert from 'assert';
 export class TorrentsAPI extends BaseClient {
   // Torrents API
@@ -126,7 +126,7 @@ export class TorrentsAPI extends BaseClient {
   async getTorrentInfo(params: {
     hash: string;
     timeout?: number;
-  }): Promise<StandardResponse> {
+  }): Promise<StandardResponse<BasicTorrentInfo>> {
     return this.request(`/torrents/torrentinfo`, { params });
   }
 }
