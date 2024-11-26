@@ -1,6 +1,6 @@
-import { UserAPI } from '../../src/api/UserApi.js';
-import { StandardResponse } from '../../src/interfaces.js';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { UserAPI } from '../../src/api/user-api.js';
+import { StandardResponse } from '../../src/interfaces.js';
 import { mockConfig } from '../mocks/config.js';
 
 describe('UserAPI', () => {

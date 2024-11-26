@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { UsenetAPI } from '../../src/api/UsenetApi.js';
+import { UsenetAPI } from '../../src/api/usenet-api.js';
 import { mockConfig } from '../mocks/config.js';
 
 // Mock the BaseClient

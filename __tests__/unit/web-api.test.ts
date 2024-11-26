@@ -1,5 +1,5 @@
-import { WebAPI } from '../../src/api/WebApi.js';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { WebAPI } from '../../src/api/web-api.js';
 import { mockConfig } from '../mocks/config.js';
 
 describe('WebAPI', () => {

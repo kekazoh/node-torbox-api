@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { RssAPI } from '../../src/api/RssApi.js';
+import { RssAPI } from '../../src/api/rss-api.js';
 import { mockConfig } from '../mocks/config.js';
 
 // Mock the BaseClient
