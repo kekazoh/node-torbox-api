@@ -1,6 +1,6 @@
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { BaseClient } from '../../src/api/base.js';
 import { TorboxConfig } from '../../src/interfaces.js';
-import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 describe('BaseClient', () => {
   let client: BaseClient;

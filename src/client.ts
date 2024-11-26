@@ -4,7 +4,7 @@ import { UserAPI } from './api/userApi.js';
 import { WebAPI } from './api/webApi.js';
 import { UsenetAPI } from './api/usenetApi.js';
 import { RssAPI } from './api/rssApi.js';
-import { GeneralAPI } from './api/generalApi.js';
+import { GeneralAPI } from './api/general-api.js';
 import { NotificationsAPI } from './api/notificationsApi.js';
 
 export class TorboxClient {

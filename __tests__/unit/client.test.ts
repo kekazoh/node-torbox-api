@@ -1,11 +1,11 @@
-import { TorboxClient } from '../../src/client.js';
-import { TorrentsAPI } from '../../src/api/torrentsApi.js';
-import { UserAPI } from '../../src/api/userApi.js';
-import { WebAPI } from '../../src/api/webApi.js';
-import { UsenetAPI } from '../../src/api/usenetApi.js';
-import { RssAPI } from '../../src/api/rssApi.js';
-import { TorboxConfig } from '../../src/interfaces.js';
 import { describe, it, expect, beforeEach } from 'vitest';
+import { TorboxClient } from '../../src/client.js';
+import { TorrentsAPI } from '../../src/api/torrents-api.js';
+import { UserAPI } from '../../src/api/user-api.js';
+import { WebAPI } from '../../src/api/web-api.js';
+import { UsenetAPI } from '../../src/api/usenet-api.js';
+import { RssAPI } from '../../src/api/rss-api.js';
+import { TorboxConfig } from '../../src/interfaces.js';
 
 describe('TorboxClient', () => {
   let client: TorboxClient;
