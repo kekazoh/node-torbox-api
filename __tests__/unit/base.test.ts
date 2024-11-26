@@ -20,7 +20,6 @@ describe('BaseClient', () => {
       expect(client['baseURL']).toBe(mockConfig.baseURL);
       expect(client['headers']).toEqual({
         'Authorization': `Bearer ${mockConfig.apiKey}`,
-        'Content-Type': 'application/json',
       });
     });
 

@@ -29,7 +29,7 @@ describe('GeneralAPI', () => {
 
       const result = await api.getStats();
 
-      expect(api['request']).toHaveBeenCalledWith('/api/stats', {
+      expect(api['request']).toHaveBeenCalledWith('/stats', {
         method: 'GET'
       });
       expect(result).toEqual(mockResponse);

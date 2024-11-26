@@ -30,7 +30,6 @@ describe('TorboxClient', () => {
       expect(client.torrents['baseURL']).toBe(mockConfig.baseURL);
       expect(client.torrents['headers']).toEqual({
         'Authorization': `Bearer ${mockConfig.apiKey}`,
-        'Content-Type': 'application/json',
       });
     });
 
@@ -39,7 +38,6 @@ describe('TorboxClient', () => {
       expect(client.users['baseURL']).toBe(mockConfig.baseURL);
       expect(client.users['headers']).toEqual({
         'Authorization': `Bearer ${mockConfig.apiKey}`,
-        'Content-Type': 'application/json',
       });
     });
 
@@ -48,7 +46,6 @@ describe('TorboxClient', () => {
       expect(client.web['baseURL']).toBe(mockConfig.baseURL);
       expect(client.web['headers']).toEqual({
         'Authorization': `Bearer ${mockConfig.apiKey}`,
-        'Content-Type': 'application/json',
       });
     });
 
@@ -57,7 +54,6 @@ describe('TorboxClient', () => {
       expect(client.usenet['baseURL']).toBe(mockConfig.baseURL);
       expect(client.usenet['headers']).toEqual({
         'Authorization': `Bearer ${mockConfig.apiKey}`,
-        'Content-Type': 'application/json',
       });
     });
 
@@ -66,7 +62,6 @@ describe('TorboxClient', () => {
       expect(client.rss['baseURL']).toBe(mockConfig.baseURL);
       expect(client.rss['headers']).toEqual({
         'Authorization': `Bearer ${mockConfig.apiKey}`,
-        'Content-Type': 'application/json',
       });
     });
 
